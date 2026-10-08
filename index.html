@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CalmMate — Mental Wellness</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">🧘</div>
+            <div>
+                <h2>CalmMate</h2>
+                <span>Your calm space</span>
+            </div>
+        </div>
+
+        <nav>
+
+            <button class="nav-item active" onclick="showPage('home', this)">
+                <i data-lucide="home"></i>
+                <span>Home</span>
+            </button>
+
+            <button class="nav-item" onclick="showPage('breathe', this)">
+                <i data-lucide="wind"></i>
+                <span>Breathe</span>
+            </button>
+
+            <button class="nav-item" onclick="showPage('music', this)">
+                <i data-lucide="music"></i>
+                <span>Music</span>
+            </button>
+
+            <button class="nav-item" onclick="showPage('journal', this)">
+                <i data-lucide="notebook-pen"></i>
+                <span>Journal</span>
+            </button>
+
+            <button class="nav-item" onclick="showPage('progress', this)">
+                <i data-lucide="chart-no-axes-combined"></i>
+                <span>Progress</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button class="nav-item" onclick="toggleDarkMode()">
+                <i data-lucide="moon"></i>
+                <span>Dark Mode</span>
+            </button>
+
+            <div class="quote">
+                <span>💚</span>
+                <p>
+                    “You don't have to control
+                    everything. Just breathe.”
+                </p>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- MOBILE HEADER -->
+        <header class="mobile-header">
+            <div class="logo">
+                <div class="logo-icon">🧘</div>
+                <h2>CalmMate</h2>
+            </div>
+
+            <button onclick="toggleDarkMode()" class="icon-button">
+                🌙
+            </button>
+        </header>
+
+
+        <!-- ================= HOME ================= -->
+
+        <section id="home" class="page active-page">
+
+            <div class="topbar">
+
+                <div>
+                    <p class="hello">Good evening 👋</p>
+                    <h1>How are you feeling today?</h1>
+                    <p class="description">
+                        Take a moment for yourself. You deserve it.
+                    </p>
+                </div>
+
+                <div class="date-box">
+                    <span id="currentDate"></span>
+                </div>
+
+            </div>
+
+
+            <!-- STRESS CARD -->
+
+            <div class="stress-card">
+
+                <div class="stress-left">
+
+                    <p class="small-title">YOUR CURRENT STRESS</p>
+
+                    <div class="stress-number">
+                        <span id="stressScore">32</span>
+                        <small>/100</small>
+                    </div>
+
+                    <div class="stress-status" id="stressStatus">
+                        ● Low stress
+                    </div>
+
+                    <p class="stress-description">
+                        You're doing okay. Keep taking small
+                        moments to relax today.
+                    </p>
+
+                </div>
+
+                <div class="stress-circle">
+                    <div>
+                        <span id="stressPercent">32%</span>
+                        <small>stress</small>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- MOOD -->
+
+            <div class="section-heading">
+                <div>
+                    <h2>How are you feeling?</h2>
+                    <p>Choose what feels closest to you.</p>
+                </div>
+            </div>
+
+            <div class="mood-grid">
+
+                <button class="mood-card" onclick="selectMood('Happy', '😊', 20)">
+                    <span>😊</span>
+                    <strong>Happy</strong>
+                </button>
+
+                <button class="mood-card" onclick="selectMood('Okay', '🙂', 35)">
+                    <span>🙂</span>
+                    <strong>Okay</strong>
+                </button>
+
+                <button class="mood-card" onclick="selectMood('Neutral', '😐', 50)">
+                    <span>😐</span>
+                    <strong>Neutral</strong>
+                </button>
+
+                <button class="mood-card" onclick="selectMood('Sad', '😔', 70)">
+                    <span>😔</span>
+                    <strong>Sad</strong>
+                </button>
+
+                <button class="mood-card" onclick="selectMood('Angry', '😡', 85)">
+                    <span>😡</span>
+                    <strong>Angry</strong>
+                </button>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="section-heading">
+                <div>
+                    <h2>Quick calm</h2>
+                    <p>Small actions can make a big difference.</p>
+                </div>
+            </div>
+
+            <div class="action-grid">
+
+                <button class="action-card green"
+                        onclick="showPage('breathe')">
+
+                    <div class="action-icon">🌬️</div>
+
+                    <div>
+                        <h3>Breathing</h3>
+                        <p>3 minute relaxation</p>
+                    </div>
+
+                    <span class="arrow">→</span>
+
+                </button>
+
+
+                <button class="action-card purple"
+                        onclick="showPage('music')">
+
+                    <div class="action-icon">🎵</div>
+
+                    <div>
+                        <h3>Calm Music</h3>
+                        <p>Relax with Spotify</p>
+                    </div>
+
+                    <span class="arrow">→</span>
+
+                </button>
+
+
+                <button class="action-card orange"
+                        onclick="showPage('journal')">
+
+                    <div class="action-icon">✍️</div>
+
+                    <div>
+                        <h3>Journal</h3>
+                        <p>Let your thoughts out</p>
+                    </div>
+
+                    <span class="arrow">→</span>
+
+                </button>
+
+
+                <button class="action-card blue"
+                        onclick="startCalmMode()">
+
+                    <div class="action-icon">🆘</div>
+
+                    <div>
+                        <h3>I'm stressed</h3>
+                        <p>Start Calm Mode</p>
+                    </div>
+
+                    <span class="arrow">→</span>
+
+                </button>
+
+            </div>
+
+
+            <!-- DAILY TIP -->
+
+            <div class="tip-card">
+
+                <div class="tip-icon">💡</div>
+
+                <div>
+                    <span>DAILY REMINDER</span>
+                    <h3 id="dailyTip">
+                        You are allowed to take a break.
+                    </h3>
+                    <p>
+                        Rest is not laziness. Your mind needs recovery too.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= BREATHE ================= -->
+
+        <section id="breathe" class="page">
+
+            <div class="page-header">
+                <span class="page-icon">🌬️</span>
+                <h1>Breathing Space</h1>
+                <p>Slow down. Breathe in. Breathe out.</p>
+            </div>
+
+            <div class="breathing-container">
+
+                <div class="breathing-circle" id="breathingCircle">
+
+                    <div class="breathing-inner">
+                        <span id="breathingText">Ready?</span>
+                        <small id="breathingTimer">60 sec</small>
+                    </div>
+
+                </div>
+
+                <h2 id="breathingInstruction">
+                    Let's begin
+                </h2>
+
+                <p id="breathingDescription">
+                    Follow the circle and let your breathing slow down.
+                </p>
+
+                <div class="breathing-controls">
+
+                    <button class="primary-button"
+                            id="breathingButton"
+                            onclick="startBreathing()">
+
+                        ▶ Start Breathing
+
+                    </button>
+
+                </div>
+
+                <div class="breathing-info">
+
+                    <div>
+                        <strong>4s</strong>
+                        <span>Inhale</span>
+                    </div>
+
+                    <div>
+                        <strong>4s</strong>
+                        <span>Hold</span>
+                    </div>
+
+                    <div>
+                        <strong>6s</strong>
+                        <span>Exhale</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= MUSIC ================= -->
+
+        <section id="music" class="page">
+
+            <div class="page-header">
+                <span class="page-icon">🎵</span>
+                <h1>Calm Music</h1>
+                <p>Find the sound that matches your mood.</p>
+            </div>
+
+
+            <div class="music-categories">
+
+                <button onclick="openSpotify('relax')">
+                    <span>😌</span>
+                    <strong>Relax</strong>
+                    <small>Peaceful sounds</small>
+                </button>
+
+                <button onclick="openSpotify('sleep')">
+                    <span>😴</span>
+                    <strong>Sleep</strong>
+                    <small>Slow & peaceful</small>
+                </button>
+
+                <button onclick="openSpotify('meditation')">
+                    <span>🧘</span>
+                    <strong>Meditation</strong>
+                    <small>Clear your mind</small>
+                </button>
+
+                <button onclick="openSpotify('focus')">
+                    <span>📚</span>
+                    <strong>Focus</strong>
+                    <small>Study peacefully</small>
+                </button>
+
+            </div>
+
+
+            <h2 class="sub-heading">Recommended for you</h2>
+
+
+            <div class="music-list">
+
+                <div class="music-card">
+
+                    <div class="album">🌧️</div>
+
+                    <div class="music-info">
+                        <h3>Peaceful Rain</h3>
+                        <p>Rain sounds • 30 min</p>
+                    </div>
+
+                    <button onclick="openSpotify('rain sounds')">
+                        🎧
+                    </button>
+
+                </div>
+
+
+                <div class="music-card">
+
+                    <div class="album">🌊</div>
+
+                    <div class="music-info">
+                        <h3>Ocean Calm</h3>
+                        <p>Ocean waves • 45 min</p>
+                    </div>
+
+                    <button onclick="openSpotify('ocean sounds')">
+                        🎧
+                    </button>
+
+                </div>
+
+
+                <div class="music-card">
+
+                    <div class="album">🌲</div>
+
+                    <div class="music-info">
+                        <h3>Forest Ambience</h3>
+                        <p>Nature sounds • 60 min</p>
+                    </div>
+
+                    <button onclick="openSpotify('forest sounds')">
+                        🎧
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= JOURNAL ================= -->
+
+        <section id="journal" class="page">
+
+            <div class="page-header">
+                <span class="page-icon">✍️</span>
+                <h1>My Journal</h1>
+                <p>Write it down. Let it out.</p>
+            </div>
+
+
+            <div class="journal-box">
+
+                <div class="journal-top">
+
+                    <div>
+                        <h2>How are you feeling?</h2>
+                        <p>This is your private space.</p>
+                    </div>
+
+                    <span>🔒</span>
+
+                </div>
+
+
+                <textarea
+                    id="journalInput"
+                    placeholder="Write whatever is on your mind..."></textarea>
+
+
+                <div class="journal-bottom">
+
+                    <span id="wordCount">0 words</span>
+
+                    <button class="primary-button"
+                            onclick="saveJournal()">
+
+                        Save Entry
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div id="journalEntries"></div>
+
+        </section>
+
+
+
+        <!-- ================= PROGRESS ================= -->
+
+        <section id="progress" class="page">
+
+            <div class="page-header">
+                <span class="page-icon">📊</span>
+                <h1>Your Progress</h1>
+                <p>Small improvements are still improvements.</p>
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <span>🌱</span>
+                    <strong>38</strong>
+                    <p>Average stress</p>
+                </div>
+
+                <div class="stat-card">
+                    <span>😊</span>
+                    <strong>5</strong>
+                    <p>Good mood days</p>
+                </div>
+
+                <div class="stat-card">
+                    <span>🌬️</span>
+                    <strong>12</strong>
+                    <p>Breathing sessions</p>
+                </div>
+
+            </div>
+
+
+            <div class="chart-card">
+
+                <div class="chart-header">
+                    <div>
+                        <h2>Stress this week</h2>
+                        <p>Your stress level over the last 7 days</p>
+                    </div>
+
+                    <strong>↓ 18%</strong>
+                </div>
+
+                <div class="chart">
+
+                    <div class="bar" style="height:70%">
+                        <span>70</span>
+                        <small>Mon</small>
+                    </div>
+
+                    <div class="bar" style="height:55%">
+                        <span>55</span>
+                        <small>Tue</small>
+                    </div>
+
+                    <div class="bar" style="height:62%">
+                        <span>62</span>
+                        <small>Wed</small>
+                    </div>
+
+                    <div class="bar" style="height:45%">
+                        <span>45</span>
+                        <small>Thu</small>
+                    </div>
+
+                    <div class="bar" style="height:50%">
+                        <span>50</span>
+                        <small>Fri</small>
+                    </div>
+
+                    <div class="bar" style="height:32%">
+                        <span>32</span>
+                        <small>Sat</small>
+                    </div>
+
+                    <div class="bar" style="height:38%">
+                        <span>38</span>
+                        <small>Sun</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="achievement">
+
+                <span>🏆</span>
+
+                <div>
+                    <strong>You're building a healthy habit!</strong>
+                    <p>
+                        You've checked in several times this week.
+                        Keep going.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<!-- ================= CALM MODE ================= -->
+
+<div class="calm-overlay" id="calmOverlay">
+
+    <button class="close-calm" onclick="closeCalmMode()">×</button>
+
+    <div class="calm-content">
+
+        <div class="calm-icon">🫶</div>
+
+        <p class="calm-label">CALM MODE</p>
+
+        <h1 id="calmTitle">
+            You're okay.
+        </h1>
+
+        <p id="calmDescription">
+            Let's slow everything down for a moment.
+        </p>
+
+
+        <div class="calm-circle" id="calmCircle">
+
+            <span id="calmText">
+                Get ready
+            </span>
+
+        </div>
+
+
+        <div class="calm-timer" id="calmTimer">
+            60
+        </div>
+
+
+        <button class="primary-button calm-button"
+                id="calmStartButton"
+                onclick="runCalmMode()">
+
+            Start Calm Mode
+
+        </button>
+
+
+        <button class="spotify-calm"
+                onclick="openSpotify('calm stress relief music')">
+
+            🎵 Play Calm Music
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
